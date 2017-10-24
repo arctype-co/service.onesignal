@@ -66,10 +66,13 @@
    (S/optional-key :ttl) S/Int 
    ; Only one notification with the same id will be shown on the device. Use the same id to update an existing notification instead of showing a new one.
    (S/optional-key :collapse_id) S/Str
-
    ; If blank the small_icon is used. Can be a drawable resource name or a URL.
    ; 256x256
    (S/optional-key :large_icon) S/Str
+   ; Buttons to add to the notification. Icon only works for Android.
+   (S/optional-key :buttons) [{:id S/Str 
+                               :text S/Str 
+                               (S/optional-key :icon) S/Str}]
 
    ;; Android
 
