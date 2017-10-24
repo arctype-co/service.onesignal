@@ -4,7 +4,6 @@
     [clojure.core.async :as async]
     [cheshire.core :as json]
     [clojure.tools.logging :as log]
-    [org.httpkit.client :as http]
     [schema.core :as S]
     [sundbry.resource :as resource :refer [with-resources]]
     [arctype.service.util :refer [map-vals xform-validator]]
