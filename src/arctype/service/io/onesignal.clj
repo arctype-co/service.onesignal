@@ -105,12 +105,12 @@
    ; Example: "notification.wav"
    (S/optional-key :ios_sound) S/Str})
 
-(S/defn user-id-filter :- Filter
-  [user-id :- S/Str]
+(S/defn tag-filter :- Filter
+  [key-name key-value]
   {:field :tag
-   :key :user-id
+   :key key-name
    :relation :=
-   :value user-id})
+   :value key-value})
 
 (S/defn create-notification
   "Request a notification to be sent."
