@@ -13,10 +13,14 @@
     [arctype.service.protocol :refer :all]))
 
 (def Config
-	{:endpoint S/Str
-	 :api-key S/Str
-	 :app-id S/Str
-	 :http http-client/Config})
+  {:api-key S/Str
+   :app-id S/Str
+   (S/optional-key :endpoint) S/Str
+   (S/optional-key :http) http-client/Config})
+
+(def default-config
+  {:endpoint "https://onesignal.com/api/v1"
+   :http {}})
 
 ; https://documentation.onesignal.com/reference
 (def nil-value "nil")
@@ -126,8 +130,9 @@
 (S/defn create
   [resource-name :- S/Str
    config :- Config]
-  (resource/make-resource
-    (map->OneSignalClient
-      {:config config})
-    resource-name nil
-    [(http-client/create "http" (:http config))]))
+  (let [config (merge default-config config)]
+    (resource/make-resource
+      (map->OneSignalClient
+        {:config config})
+      resource-name nil
+      [(http-client/create "http" (:http config))])))
