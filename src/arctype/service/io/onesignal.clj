@@ -113,7 +113,7 @@
   "Request a notification to be sent."
   [this 
    params :- CreateNotificationParams]
-  (with-resources this ["http"]
+  (with-resources this [:http]
     (let [req (api-request this "/notifications" params)]
       (http-client/request! http req (response-chan)))))
 
@@ -128,11 +128,11 @@
     this))
 
 (S/defn create
-  [resource-name :- S/Str
+  [resource-name
    config :- Config]
   (let [config (merge default-config config)]
     (resource/make-resource
       (map->OneSignalClient
         {:config config})
       resource-name nil
-      [(http-client/create "http" (:http config))])))
+      [(http-client/create :http (:http config))])))
