@@ -9,8 +9,7 @@
     [sundbry.resource :as resource :refer [with-resources]]
     [arctype.service.util :refer [map-vals xform-validator]]
     [arctype.service.io.oauth :as oauth]
-    [arctype.service.io.http.client :as http-client]
-    [arctype.service.protocol :refer :all]))
+    [arctype.service.io.http.client :as http-client]))
 
 (def Config
   {:api-key S/Str
@@ -117,15 +116,7 @@
     (let [req (api-request this "/notifications" params)]
       (http-client/request! http req (response-chan)))))
 
-(defrecord OneSignalClient [config]
-  PLifecycle
-  (start [this]
-    (log/info "Starting OneSignal client")
-    this)
-
-  (stop [this]
-    (log/info "Stopping OneSignal client")
-    this))
+(defrecord OneSignalClient [config])
 
 (S/defn create
   [resource-name
