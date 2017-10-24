@@ -56,6 +56,8 @@
    (S/optional-key :filters) [Filter]
    ; The notification's title, a map of language codes to text for each language. 
    (S/optional-key :headings) {:en S/Str} 
+   ; The notification's subtitle, a map of language codes to text for each language
+   (S/optional-key :subtitle) {:en S/Str}
    ; A custom map of data that is passed back to your app.
    (S/optional-key :data) {S/Keyword S/Any} 
    ; The URL to open in the browser when a user clicks on the notification.
