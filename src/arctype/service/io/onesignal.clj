@@ -18,7 +18,10 @@
 
 (def default-config
   {:endpoint "https://onesignal.com/api/v1"
-   :http {}})
+   :http {:throttle
+          {:rate 1
+           :period :second
+           :burst 1}}})
 
 ; https://documentation.onesignal.com/reference
 (def nil-value "nil")
