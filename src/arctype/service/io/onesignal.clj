@@ -37,7 +37,8 @@
 
 (def xform-response
   (http-client/xform-response
-    {:200 (fn [{:keys [body]}] (json/decode body true))}))
+    {:200 (fn [{:keys [body]}] (json/decode body true))
+     :201 (fn [{:keys [body]}] (json/decode body true))}))
 
 (defn- response-chan
   []
